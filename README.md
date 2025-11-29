@@ -16,8 +16,8 @@ def deps do
   [
     {:credo, "~> 1.7.7", only: [:dev, :test], runtime: false},
     {:benchee, "~> 1.5", only: :dev},
-    {:stream_data, "~> 1.2", only: [:test, :dev]},
-    {:aoc_2025, "~> 0.1.0"}
+    {:stream_data, "~> 1.2", only: [:test, :dev]}
+    # {:aoc_2025, "~> 0.1.0"}
   ]
 end
 ```

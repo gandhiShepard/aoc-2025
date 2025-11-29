@@ -4,7 +4,12 @@ defmodule Ben.Day01Test do
 
   alias Ben.Day01
 
-  describe "" do
+  describe "Part 1" do
     test ""
   end
+
+  describe "Part 2" do
+    test ""
+  end
+
 end
