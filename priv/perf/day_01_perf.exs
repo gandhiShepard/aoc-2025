@@ -4,8 +4,8 @@ alias Pul.Day01, as: Puls
 # Run `mix run priv/perf/day_01_perf.exs`
 
 test_data = %{
-  "bens_data" => File.read!("priv/data/ben/day_01_data.txt"),
-  "puls_data" => File.read!("priv/data/pul/day_01_data.txt"),
+  "bens_data_stream" => File.stream!("priv/data/ben/day_01_data.txt"),
+  "puls_data_stream" => File.stream!("priv/data/pul/day_01_data.txt"),
 }
 
 Benchee.run(
