@@ -13,7 +13,7 @@ Benchee.run(
     "BEN_PART_1" => &Bens.part1(&1),
     # "PUL_PART_1" => &Puls.part1(&1),
     #
-    # "BEN_PART_2" => &Bens.part2(&1),
+    "BEN_PART_2" => &Bens.part2(&1),
     # "PUL_PART_2" => &Puls.part2(&1),
   },
   inputs: test_data

@@ -30,25 +30,26 @@ defmodule Ben.Day01 do
     ** (ArgumentError) input must be a path to a file in the priv directory
   """
 
-  @spec part1(String.t) :: non_neg_integer
+  @spec part1(String.t()) :: non_neg_integer
   def part1("priv/" <> _rest_of_path = path_to_data) do
     path_to_data
     |> stream_input()
     |> Enum.reduce([50], fn
-      "L" <> num_string, [curr_position | _rest] = acc ->
-        {num, _} = Integer.parse(num_string)
-        new_position = rem((curr_position - num + 100), 100)
+      "L" <> increment_string, [current_position | _rest] = acc ->
+        {increments, _} = Integer.parse(increment_string)
+        new_position = rem(current_position - increments + 100, 100)
         [new_position | acc]
 
-      "R" <> num_string, [curr_position | _rest] = acc ->
-        {num, _} = Integer.parse(num_string)
-        new_position = rem(curr_position + num, 100)
+      "R" <> increment_string, [current_position | _rest] = acc ->
+        {increments, _} = Integer.parse(increment_string)
+        new_position = rem(current_position + increments, 100)
         [new_position | acc]
     end)
-    |> Enum.count(& &1 == 0)
+    |> Enum.count(&(&1 == 0))
   end
 
-  def part1(_incorrect_input), do: raise(ArgumentError, "input must be a path to a file in the priv directory")
+  def part1(_incorrect_input),
+    do: raise(ArgumentError, "input must be a path to a file in the priv directory")
 
   # ------------------------------------------------------------------------------
 
@@ -66,35 +67,37 @@ defmodule Ben.Day01 do
     path_to_data
     |> stream_input()
     |> Enum.reduce([{50, 0}], fn
-      "L" <> num_string, [{curr_position, _passes} | _rest] = acc ->
-        {num, _} = Integer.parse(num_string)
+      "L" <> increment_string, [{current_position, _passes} | _rest] = acc ->
+        {increments, _} = Integer.parse(increment_string)
+        passes = div(increments, 100)
+        remaining_rotation = rem(increments, 100)
+        new_position = rem(current_position - remaining_rotation + 100, 100)
 
-        passes = div(num, 100)
-        remaining_rotation = rem(num, 100)
+        total_passes =
+          if current_position != 0 && current_position - remaining_rotation <= 0,
+            do: 1 + passes,
+            else: passes
 
-        new_position = rem((curr_position - remaining_rotation + 100), 100)
-
-        total_passes = if curr_position != 0 && curr_position - remaining_rotation <= 0, do: 1 + passes, else: passes
         [{new_position, total_passes} | acc]
 
-      "R" <> num_string, [{curr_position, _rotations} | _rest] = acc ->
-        {num, _} = Integer.parse(num_string)
+      "R" <> increment_string, [{current_position, _rotations} | _rest] = acc ->
+        {increments, _} = Integer.parse(increment_string)
+        passes = div(increments, 100)
+        remaining_rotation = rem(increments, 100)
+        new_position = rem(current_position + remaining_rotation, 100)
 
-        passes = div(num, 100)
-        remaining_rotation = rem(num, 100)
+        total_passes =
+          if current_position != 0 && current_position + remaining_rotation >= 100,
+            do: 1 + passes,
+            else: passes
 
-        new_position = rem(curr_position + remaining_rotation, 100)
-
-        total_passes = if curr_position != 0 && curr_position + remaining_rotation >= 100, do: 1 + passes, else: passes
         [{new_position, total_passes} | acc]
     end)
-    |> Enum.reduce(0, fn
-      {_, passes}, acc -> acc + passes
-    end)
-
+    |> Enum.reduce(0, fn {_, passes}, acc -> acc + passes end)
   end
 
-  def part2(_incorrect_input), do: raise(ArgumentError, "input must be a path to a file in the priv directory")
+  def part2(_incorrect_input),
+    do: raise(ArgumentError, "input must be a path to a file in the priv directory")
 
   # ------------------------------------------------------------------------------
 
