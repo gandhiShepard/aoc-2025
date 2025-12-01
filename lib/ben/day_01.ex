@@ -67,33 +67,33 @@ defmodule Ben.Day01 do
     path_to_data
     |> stream_input()
     |> Enum.reduce([{50, 0}], fn
-      "L" <> increment_string, [{current_position, _passes} | _rest] = acc ->
+      "L" <> increment_string, [{current_position, _times_passing_zero} | _rest] = acc ->
         {increments, _} = Integer.parse(increment_string)
-        passes = div(increments, 100)
-        remaining_rotation = rem(increments, 100)
-        new_position = rem(current_position - remaining_rotation + 100, 100)
+        times_passing_zero = div(increments, 100)
+        remaining_increments_to_rotate = rem(increments, 100)
+        new_position = rem(current_position - remaining_increments_to_rotate + 100, 100)
 
-        total_passes =
-          if current_position != 0 && current_position - remaining_rotation <= 0,
-            do: 1 + passes,
-            else: passes
+        total_times_passing_zero =
+          if current_position != 0 && current_position - remaining_increments_to_rotate <= 0,
+            do: 1 + times_passing_zero,
+            else: times_passing_zero
 
-        [{new_position, total_passes} | acc]
+        [{new_position, total_times_passing_zero} | acc]
 
       "R" <> increment_string, [{current_position, _rotations} | _rest] = acc ->
         {increments, _} = Integer.parse(increment_string)
-        passes = div(increments, 100)
-        remaining_rotation = rem(increments, 100)
-        new_position = rem(current_position + remaining_rotation, 100)
+        times_passing_zero = div(increments, 100)
+        remaining_increments_to_rotate = rem(increments, 100)
+        new_position = rem(current_position + remaining_increments_to_rotate, 100)
 
-        total_passes =
-          if current_position != 0 && current_position + remaining_rotation >= 100,
-            do: 1 + passes,
-            else: passes
+        total_times_passing_zero =
+          if current_position != 0 && current_position + remaining_increments_to_rotate >= 100,
+            do: 1 + times_passing_zero,
+            else: times_passing_zero
 
-        [{new_position, total_passes} | acc]
+        [{new_position, total_times_passing_zero} | acc]
     end)
-    |> Enum.reduce(0, fn {_, passes}, acc -> acc + passes end)
+    |> Enum.reduce(0, fn {_, times_passing_zero}, acc -> acc + times_passing_zero end)
   end
 
   def part2(_incorrect_input),
