@@ -45,7 +45,6 @@ defmodule Ben.Day01 do
          <<direction>> <> increment_string = _instruction,
          {current_position, total_times_pointing_at_zero} = _accumulator
        ) do
-    # Parse instuction to get increments
     {increments, _} = Integer.parse(increment_string)
 
     new_position =
