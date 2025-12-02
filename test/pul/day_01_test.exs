@@ -1,6 +1,7 @@
 defmodule Pul.Day01Test do
   use ExUnit.Case, async: true
   alias Pul.Day01
+  doctest Day01, import: true
 
   defp testsample, do: File.stream!("./test/pul/data/01_01_unit") |> Stream.map(&String.trim/1)
   defp testdata, do: File.stream!("./test/pul/data/01_01") |> Stream.map(&String.trim/1)
