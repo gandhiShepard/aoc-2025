@@ -1,11 +1,11 @@
 alias Ben.Day02, as: Bens
 alias Pul.Day02, as: Puls
 
-# Run `mix run priv/perf/day_01_perf.exs`
+# Run `mix run priv/perf/day_02_perf.exs`
 
 test_data = %{
   "bens_data_stream" => "priv/data/ben/day_02_data.txt",
-  # "puls_data_stream" => "priv/data/pul/day_01_data.txt",
+  # "puls_data_stream" => "priv/data/pul/day_02_data.txt",
 }
 
 Benchee.run(
@@ -22,4 +22,8 @@ Benchee.run(
 # ------------------------------------------------------------------------------
 
 # First Solutions
+
+# Name                 ips        average  deviation         median         99th %
+# BEN_PART_1         12.57       0.0795 s     ±1.39%       0.0794 s       0.0825 s
+# BEN_PART_2          0.50         2.02 s     ±0.25%         2.02 s         2.03 s
 
