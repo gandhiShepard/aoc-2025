@@ -12,15 +12,15 @@ defmodule Pul.Day02 do
   end
 
   def invalid?(id_string, odd_repetions_valid?)
-  for len <- @max_len_rep_pattern..@min_len_rep_pattern do
+  for len <- @max_len_rep_pattern..@min_len_rep_pattern, size = 8 * len do
     # match strings with 8 - 2 repetitions of the given pattern length, odd counts are only match if they are not valid
-    def invalid?(<<p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len))>>, _), do: true
-    def invalid?(<<p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len))>>, false), do: true
-    def invalid?(<<p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len))>>, _), do: true
-    def invalid?(<<p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len))>>, false), do: true
-    def invalid?(<<p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len))>>, _), do: true
-    def invalid?(<<p::binary-size(unquote(len)), p::binary-size(unquote(len)), p::binary-size(unquote(len))>>, false), do: true
-    def invalid?(<<p::binary-size(unquote(len)), p::binary-size(unquote(len))>>, _), do: true
+    def invalid?(<<p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size)>>, _), do: true
+    def invalid?(<<p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size)>>, false), do: true
+    def invalid?(<<p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size)>>, _), do: true
+    def invalid?(<<p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size)>>, false), do: true
+    def invalid?(<<p::unquote(size), p::unquote(size), p::unquote(size), p::unquote(size)>>, _), do: true
+    def invalid?(<<p::unquote(size), p::unquote(size), p::unquote(size)>>, false), do: true
+    def invalid?(<<p::unquote(size), p::unquote(size)>>, _), do: true
   end
   def invalid?(_, _), do: false
 end
