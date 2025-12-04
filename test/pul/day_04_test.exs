@@ -16,10 +16,10 @@ defmodule Pul.Day04Test do
   end
   describe "Day 04, part 02" do
     test "works with example" do
-      assert Day04.count_of_accessible_paper_rolls(testsample()) == nil
+      assert Day04.count_of_removable_paper_rolls(testsample()) == 43
     end
     test "works with test data" do
-      assert Day04.count_of_accessible_paper_rolls(testdata()) == nil
+      assert Day04.count_of_removable_paper_rolls(testdata()) == 8722
     end
   end
 end
