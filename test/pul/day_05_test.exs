@@ -11,7 +11,7 @@ defmodule Pul.Day05Test do
       assert Day05.count_of_fresh_ingredients(testsample()) == 3
     end
     test "works with test data" do
-      assert Day05.count_of_fresh_ingredients(testdata()) == nil
+      assert Day05.count_of_fresh_ingredients(testdata()) == 505
     end
   end
   # describe "Day 05, part 02" do
