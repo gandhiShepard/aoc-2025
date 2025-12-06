@@ -11,7 +11,7 @@ defmodule Pul.Day06Test do
       assert Day06.grand_total_of_solved_tasks(testsample()) == 4277556
     end
     test "works with test data" do
-      assert Day06.grand_total_of_solved_tasks(testdata()) == nil
+      assert Day06.grand_total_of_solved_tasks(testdata()) == 5171061464548
     end
   end
   # describe "Day 06, part 02" do
