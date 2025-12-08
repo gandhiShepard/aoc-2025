@@ -8,10 +8,10 @@ defmodule Pul.Day08Test do
 
   describe "Day 08, part 01" do
     test "works with example" do
-      assert Day08.multiply_three_largest_circuits(testsample()) == 40
+      assert Day08.multiply_three_largest_circuits(testsample(), 10) == 40
     end
     test "works with test data" do
-      assert Day08.multiply_three_largest_circuits(testdata()) == nil
+      assert Day08.multiply_three_largest_circuits(testdata(), 1000) == 123930
     end
   end
   # describe "Day 08, part 02" do
