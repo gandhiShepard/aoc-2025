@@ -14,12 +14,12 @@ defmodule Pul.Day08Test do
       assert Day08.multiply_three_largest_circuits(testdata(), 1000) == 123930
     end
   end
-  # describe "Day 08, part 02" do
-  #   test "works with example" do
-  #     assert Day08.count_of_timelines(testsample()) == 40
-  #   end
-  #   test "works with test data" do
-  #     assert Day08.count_of_timelines(testdata()) == 3223365367809
-  #   end
-  # end
+  describe "Day 08, part 02" do
+    test "works with example" do
+      assert Day08.distance_of_last_connection(testsample()) == 25272
+    end
+    test "works with test data" do
+      assert Day08.distance_of_last_connection(testdata()) == 27338688
+    end
+  end
 end
