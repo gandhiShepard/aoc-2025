@@ -1,4 +1,3 @@
-
 defmodule Ben.Day02Test do
   use ExUnit.Case, async: true
 
