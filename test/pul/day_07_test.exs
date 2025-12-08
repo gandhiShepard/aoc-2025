@@ -14,12 +14,12 @@ defmodule Pul.Day07Test do
       assert Day07.count_of_splits(testdata()) == 1543
     end
   end
-  # describe "Day 07, part 02" do
-  #   test "works with example" do
-  #     assert Day07.grand_total_of_solved_tasks(testsample(), :right_to_left) == 3263827
-  #   end
-  #   test "works with test data" do
-  #     assert Day07.grand_total_of_solved_tasks(testdata(), :right_to_left) == 10189959087258
-  #   end
-  # end
+  describe "Day 07, part 02" do
+    test "works with example" do
+      assert Day07.count_of_timelines(testsample()) == 40
+    end
+    test "works with test data" do
+      assert Day07.count_of_timelines(testdata()) == 3223365367809
+    end
+  end
 end
