@@ -9,11 +9,18 @@ defmodule Ben.Day06 do
     |> Stream.zip_with(&Enum.reverse/1)
     |> Enum.reduce(0, fn
       ["*" | rest], acc ->
-        Enum.map(rest, &String.to_integer/1) |> Enum.product() |> then(&Kernel.+(&1, acc))
+        rest
+        |> Enum.map(fn num_str -> String.trim(num_str) |> String.to_integer() end)
+        |> Enum.product()
+        |> then(&Kernel.+(&1, acc))
 
       ["+" | rest], acc ->
-        Enum.map(rest, &String.to_integer/1) |> Enum.sum() |> then(&Kernel.+(&1, acc))
+        rest
+        |> Enum.map(fn num_str -> String.trim(num_str) |> String.to_integer() end)
+        |> Enum.sum()
+        |> then(&Kernel.+(&1, acc))
     end)
+    # |> dbg()
   end
 
   def cephalopod_grand_total(input) do
