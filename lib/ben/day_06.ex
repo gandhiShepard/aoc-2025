@@ -70,4 +70,10 @@ defmodule Ben.Day06 do
          format_rows(rest, [num | temp], operator, acc)
      end
   end
+
+  # Rows will be formatted to look like this
+  # {"+", [4, 431, 623]},
+  # {"*", [175, 581, 32]},
+  # {"+", [8, 248, 369]},
+  # {"*", [356, 24, 1]}
 end
